@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+        }
+        .dashboard-menu {
+            flex: 0 0 200px;
+            padding: 20px;
+            background-color: #1abc9c;
+            color: #fff;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+        .dashboard-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 0;
+        }
+        .dashboard-content {
+            flex: 1;
+            padding: 20px;
+        }
+        .dashboard-content h2 {
+            margin-top: 0;
+        }
+        .dashboard-content .box {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .box label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .box input,
+        .box textarea,
+        .box select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        .box button {
+            background-color: #1abc9c; /* Use the turquoise color */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .box button:hover {
+            background-color: #16a085; /* Slightly darker shade on hover */
+        }
+
+        .dashboard-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 0;
+            display: block;
+        }
+
+        .dashboard-menu a:hover,
+        .dashboard-menu a:focus {
+            background-color: #1abc9c;
+        }
+
+        .dashboard-menu a:visited {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-menu">
+            <h1>PATIENT DASHBOARD</h1>
+            <a href="#profile" onclick="showContent('profile')">Profile</a>
+            <a href="#summary-report" onclick="showContent('summary-report')">Summary Report</a>
+            <a href="#make-appointment" onclick="showContent('make-appointment')">Make an Appointment</a>
+            <a href="#appointment-status" onclick="showContent('appointment-status')">Appointment Status</a>
+            <a href="#contact" onclick="showContent('contact')">Contact</a>
+            <a href="index.html">Log Out</a>
+        </div>
+
+        <div class="dashboard-content">
+            <h2>Welcome, John Doe | Hope you are well and safe</h2>
+
+            <!-- Profile Section -->
+            <div id="profile-content" class="box" style="display: none;">
+                <h3>Profile</h3>
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Age:</strong> 30</p>
+                <p><strong>Gender:</strong> Male</p>
+                <p><strong>Email:</strong> john.doe@example.com</p>
+                <p><strong>Contact:</strong> (555) 123-4567</p>
+                <p><strong>Address:</strong> 123 Main St, Cityville</p>
+                <p><strong>Disease:</strong> Common Cold</p>
+            </div>
+
+            <!-- Summary Report Section -->
+            <div id="summary-report-content" class="box" style="display: none;">
+                <h3>Summary Report</h3>
+                <p>Click below to view the summary report:</p>
+                <a href="report.html">View Report</a><br>
+                <a href="dow-report.html">Download Report</a>
+            </div>
+    <!-- Make an Appointment Section -->
+    <div id="make-appointment-content" class="box" style="display: none;">
+        <h3>Make an Appointment</h3>
+        <form action="appointment_confirmation.html" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="appointment-date">Appointment Date:</label>
+            <input type="date" id="appointment-date" name="appointment-date" required>
+
+            <label for="purpose">Appointment Purpose:</label>
+            <textarea id="purpose" name="purpose" required></textarea>
+
+            <label for="doctor">Doctor Name:</label>
+            <input type="text" id="doctor" name="doctor" required>
+
+            <button type="submit">Make an Appointment</button>
+        </form>
+    </div>
+    <!-- Appointment Status Section -->
+    <div id="appointment-status-content" class="box" style="display: none;">
+        <h3>Appointment Status</h3>
+        <p><strong>Upcoming appointment:</strong> August 15, 2023, 10:00 AM</p>
+        <p><strong>Doctor:</strong> Dr. Smith</p>
+        <p><strong>Appointment purpose:</strong> Follow-up</p>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact-content" class="box" style="display: none;">
+        <h3>Contact</h3>
+        <p><strong>Emergency Contact:</strong> (555) 987-6543</p>
+        <p><strong>Email:</strong> contact@example.com</p>
+        <p><strong>Address:</strong> 456 Second St, Townville</p>
+    </div>
+</div>
+</div>
+
+<script>
+function showContent(contentId) {
+    var contents = document.getElementsByClassName("box");
+    for (var i = 0; i < contents.length; i++) {
+        contents[i].style.display = "none";
+    }
+    var contentToShow = document.getElementById(contentId + "-content");
+    contentToShow.style.display = "block";
+}
+</script>
+    
+
+</body>
+</html>
